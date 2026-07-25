@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Without this, refreshing or directly visiting a route like /products or
+# /admin returns Netlify's default 404 page, because those paths don't exist
+# as real files — React Router handles them client-side after index.html loads.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

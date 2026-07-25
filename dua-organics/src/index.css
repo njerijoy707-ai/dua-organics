@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ============================================
+   DUA ORGANICS — Global Styles
+   ============================================ */
+
+/* Custom CSS variables for the brand color palette */
+@theme {
+  --color-forest-900: #0B3D0B;
+  --color-forest-800: #1A5C1A;
+  --color-forest-700: #2D7A2D;
+  --color-forest-600: #3D8B3D;
+  --color-forest-500: #4E9C4E;
+  --color-forest-400: #6BB36B;
+  --color-forest-300: #8FCC8F;
+  --color-forest-200: #B8E0B8;
+  --color-forest-100: #E0F2E0;
+  --color-forest-50: #F0F9F0;
+  --color-cream-50: #FFFDF5;
+  --color-cream-100: #FFF9E6;
+  --color-cream-200: #FFF3CC;
+  --color-gold-500: #C4A35A;
+  --color-gold-400: #D4B86A;
+  --color-gold-600: #A8883E;
+  --color-gold-100: #FFF5DC;
+  --font-heading: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Register animation keyframes with Tailwind v4 */
+  --animate-fade-in-up: fade-in-up 0.8s ease-out both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-slide-up: slide-up 0.6s ease-out both;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Base element styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1a1a1a;
+  background: #FFFDF5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading font family override */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F0F9F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #6BB36B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4E9C4E;
+}
+
+/* Floral decorative elements for headings */
+.floral-heading::before,
+.floral-heading::after {
+  content: '🌿';
+  display: inline-block;
+  margin: 0 0.5rem;
+  font-size: 0.8em;
+}
+
+/* Rose decorative heading variant */
+.rose-heading::before {
+  content: '🌹';
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+}
+.rose-heading::after {
+  content: '🌹';
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.8em;
+}
