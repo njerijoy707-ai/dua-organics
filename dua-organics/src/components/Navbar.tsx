@@ -6,7 +6,7 @@
  */
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User, ShoppingBag, Leaf } from 'lucide-react';
+import { Menu, X, User, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
@@ -49,11 +49,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <Leaf className="w-6 h-6 text-forest-300 group-hover:text-gold-400 transition-colors" />
-            <span className="font-heading text-2xl md:text-3xl font-bold text-white tracking-wide">
-              Dua Organics
-            </span>
+          <Link to="/" className="flex items-center gap-2 group shrink-0">
+            <img
+              src="/logo.png"
+              alt="Dua Organics — Natural Beauty, Naturally You"
+              className="h-12 md:h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}

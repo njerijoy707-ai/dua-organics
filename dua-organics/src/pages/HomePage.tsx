@@ -8,8 +8,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Leaf, Shield, Truck, Heart } from 'lucide-react';
-import type { Review } from '../data/products';
-import type { BlogPost } from '../data/blog';
 import HeroSection from '../components/HeroSection';
 import ProductCard from '../components/ProductCard';
 import ReviewCard from '../components/ReviewCard';
@@ -266,6 +264,8 @@ export default function HomePage() {
 /* =============================================
    Animated wrapper for Review cards
    ============================================= */
+import type { Review } from '../data/products';
+
 function ReviewCardAnimated({ review, index }: { review: Review; index: number }) {
   const { ref, style } = useScrollAnimation({ delay: index * 100 });
   return (
@@ -278,6 +278,8 @@ function ReviewCardAnimated({ review, index }: { review: Review; index: number }
 /* =============================================
    Animated wrapper for Blog cards
    ============================================= */
+import type { BlogPost } from '../data/blog';
+
 function BlogCardAnimated({ post, index }: { post: BlogPost; index: number }) {
   const { ref, style } = useScrollAnimation({ delay: index * 150 });
   return (

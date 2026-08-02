@@ -5,7 +5,7 @@
  * newsletter signup, and sitemap links.
  */
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Leaf, Clock, Globe, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Globe, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -17,8 +17,11 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Leaf className="w-6 h-6 text-forest-300" />
-              <span className="font-heading text-2xl font-bold">Dua Organics</span>
+              <img
+                src="/logo.png"
+                alt="Dua Organics — Natural Beauty, Naturally You"
+                className="h-14 w-auto object-contain"
+              />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-4">
               Premium organic skincare crafted from nature's finest botanicals. 
