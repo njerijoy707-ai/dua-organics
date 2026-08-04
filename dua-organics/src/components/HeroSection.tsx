@@ -61,28 +61,40 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Decorative leaf element */}
+        {/* Decorative logo icon */}
         <div style={fadeStyle(0)} className="mb-4">
-          <span className="text-4xl">🌿</span>
+          <img
+            src="/favicon.png"
+            alt=""
+            aria-hidden="true"
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-lg"
+          />
         </div>
 
-        {/* Brand Name — Elegant Times New Roman / Cormorant Garamond */}
+        {/* Brand Name — Elegant Times New Roman / Cormorant Garamond, in brand colors */}
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-wide mb-4"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide mb-4"
           style={{
             fontFamily: "'Cormorant Garamond', 'Times New Roman', serif",
+            textShadow: '0 2px 16px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.4)',
             ...fadeStyle(0.15),
           }}
         >
-          Dua Organics
+          <span style={{ color: '#8EB115' }}>Dua</span>{' '}
+          <span style={{ color: '#603B1E' }}>Organics</span>
         </h1>
 
         {/* Tagline */}
         <p
-          className="text-white/80 text-lg sm:text-xl md:text-2xl font-light max-w-2xl mb-2"
-          style={{ fontFamily: 'var(--font-body)', ...fadeStyle(0.3) }}
+          className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl mb-2 italic"
+          style={{
+            fontFamily: 'var(--font-body)',
+            color: '#8FCC8F',
+            textShadow: '0 2px 10px rgba(0,0,0,0.6)',
+            ...fadeStyle(0.3),
+          }}
         >
-          Premium Organic Skincare from Nature
+          Natural Beauty, Naturally You
         </p>
 
         {/* Leaf divider */}
