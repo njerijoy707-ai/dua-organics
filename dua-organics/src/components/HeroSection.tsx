@@ -61,14 +61,23 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Decorative logo icon */}
+        {/* Decorative logo icon — dark backdrop keeps it visible over bright video */}
         <div style={fadeStyle(0)} className="mb-4">
-          <img
-            src="/favicon.png"
-            alt=""
-            aria-hidden="true"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-lg"
-          />
+          <div
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full flex items-center justify-center"
+            style={{
+              background: 'radial-gradient(circle, rgba(11,61,11,0.55) 0%, rgba(11,61,11,0.25) 65%, rgba(11,61,11,0) 100%)',
+              backdropFilter: 'blur(2px)',
+            }}
+          >
+            <img
+              src="/favicon.png"
+              alt=""
+              aria-hidden="true"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+              style={{ filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.7))' }}
+            />
+          </div>
         </div>
 
         {/* Brand Name — Elegant Times New Roman / Cormorant Garamond, in brand colors */}
