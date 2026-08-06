@@ -61,50 +61,28 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Decorative logo icon — dark backdrop keeps it visible over bright video */}
-        <div style={fadeStyle(0)} className="mb-4">
+        {/* Full logo — dark backdrop keeps it visible over bright video */}
+        <div style={fadeStyle(0)} className="mb-6 px-2">
           <div
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full flex items-center justify-center"
+            className="rounded-[2rem] flex items-center justify-center px-6 py-5 sm:px-10 sm:py-7"
             style={{
-              background: 'radial-gradient(circle, rgba(11,61,11,0.55) 0%, rgba(11,61,11,0.25) 65%, rgba(11,61,11,0) 100%)',
+              background: 'radial-gradient(ellipse, rgba(11,61,11,0.55) 0%, rgba(11,61,11,0.28) 60%, rgba(11,61,11,0) 100%)',
               backdropFilter: 'blur(2px)',
             }}
           >
             <img
-              src="/favicon.png"
-              alt=""
-              aria-hidden="true"
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-              style={{ filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.7))' }}
+              src="/logo.png"
+              alt="Dua Organics — Natural Beauty, Naturally You"
+              className="w-[min(90vw,520px)] sm:w-[420px] md:w-[520px] object-contain"
+              style={{ filter: 'drop-shadow(0 3px 14px rgba(0,0,0,0.65))' }}
             />
           </div>
         </div>
 
-        {/* Brand Name — Elegant Times New Roman / Cormorant Garamond, in brand colors */}
-        <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wide mb-4"
-          style={{
-            fontFamily: "'Cormorant Garamond', 'Times New Roman', serif",
-            textShadow: '0 2px 16px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.4)',
-            ...fadeStyle(0.15),
-          }}
-        >
-          <span style={{ color: '#8EB115' }}>Dua</span>{' '}
-          <span style={{ color: '#603B1E' }}>Organics</span>
-        </h1>
-
-        {/* Tagline */}
-        <p
-          className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl mb-2 italic"
-          style={{
-            fontFamily: 'var(--font-body)',
-            color: '#8FCC8F',
-            textShadow: '0 2px 10px rgba(0,0,0,0.6)',
-            ...fadeStyle(0.3),
-          }}
-        >
-          Natural Beauty, Naturally You
-        </p>
+        {/* Visually hidden — keeps the page heading/tagline available to screen readers
+            and search engines now that they're shown inside the logo image above. */}
+        <h1 className="sr-only">Dua Organics</h1>
+        <p className="sr-only">Natural Beauty, Naturally You</p>
 
         {/* Leaf divider */}
         <div className="flex items-center gap-3 mb-8" style={fadeStyle(0.45)}>
