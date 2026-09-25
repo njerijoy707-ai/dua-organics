@@ -47,7 +47,7 @@ export default function ProductsPage() {
               <span className="w-12 h-px bg-forest-300" />
             </div>
             <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-              Handcrafted with love using sustainably sourced organic ingredients from Kenya's forests and highlands.
+              Handcrafted with love using sustainably sourced organic ingredients.
             </p>
           </div>
 
