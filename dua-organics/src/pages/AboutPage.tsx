@@ -38,13 +38,27 @@ export default function AboutPage() {
               <h2 className="font-heading text-3xl font-bold text-forest-900 mb-6 floral-heading">Who We Are</h2>
               <div className="text-gray-600 leading-relaxed space-y-4">
                 <p>
-                  <strong className="text-forest-800">Dua Organics</strong> was born from a deep love for Kenya's 
-                  natural heritage and a belief that skincare should be pure, honest, and kind — to both people and planet.
+                  <strong className="text-forest-800">Dua Organics</strong> was born from a deeply personal 
+                  journey — the founder's experience with sensitive and challenging skin.
                 </p>
                 <p>
-                  We source our ingredients directly from smallholder farmers and forest communities across Kenya. 
-                  From the ancient Kakamega Forest to the fertile slopes of Mount Kenya, every ingredient tells a 
-                  story of sustainable harvesting, fair trade, and traditional botanical knowledge passed down through generations.
+                  As a baby, I struggled with eczema, and as I grew older, I experienced acne that affected my 
+                  skin and my confidence. Living through these experiences made me more conscious of the products 
+                  I used and the ingredients they contained. I began searching for natural, gentle, and nourishing 
+                  alternatives that could care for both the skin and hair without being harsh.
+                </p>
+                <p>
+                  That personal journey inspired me to create Dua Organics — an organic body and hair care 
+                  company founded on the belief that taking care of ourselves should be simple, natural, and nourishing.
+                </p>
+                <p>
+                  One of my favourite natural ingredients is shea butter. Rich and deeply moisturising, shea 
+                  butter has become a key ingredient in many of our products because of its versatility and its 
+                  ability to nourish both the skin and hair.
+                </p>
+                <p>
+                  At Dua Organics, our goal is to create products inspired by nature and rooted in personal 
+                  experience, while encouraging everyone to embrace their natural beauty with confidence.
                 </p>
                 <p>
                   Our products are handcrafted in small batches to ensure the highest quality. We never use 
@@ -54,6 +68,9 @@ export default function AboutPage() {
                 <p>
                   The name "Dua" means "prayer" in Swahili — a reflection of our intentional, mindful approach to 
                   everything we create. Every product is a prayer for your wellbeing and the wellbeing of our planet.
+                </p>
+                <p className="font-semibold text-forest-800">
+                  Dua Organics — naturally inspired, thoughtfully created.
                 </p>
               </div>
             </div>

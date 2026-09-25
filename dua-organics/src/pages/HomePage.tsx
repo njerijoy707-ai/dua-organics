@@ -82,8 +82,7 @@ export default function HomePage() {
                 <span className="w-12 h-px bg-forest-300 inline-block" />
               </div>
               <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-                Each product is handcrafted with sustainably sourced organic ingredients,
-                bringing you the purest botanicals from Kenya's forests and highlands.
+                Each product is handcrafted with sustainably sourced organic ingredients.
               </p>
             </div>
 
