@@ -58,9 +58,15 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.45)' }}>
-        {/* Decorative leaf element */}
-        <div style={fadeStyle(0)} className="mb-4">
-          <span className="text-4xl">🌿</span>
+        {/* Brand logo */}
+        <div style={fadeStyle(0)} className="mb-5">
+          <span className="inline-block bg-cream-50/95 rounded-2xl px-4 py-2 shadow-lg">
+            <img
+              src="/logo.png"
+              alt="Dua Organics logo"
+              className="h-24 sm:h-28 md:h-32 w-auto block"
+            />
+          </span>
         </div>
 
         {/* Brand Name — Elegant Times New Roman / Cormorant Garamond */}
