@@ -49,7 +49,8 @@ export default function HomePage() {
         "telephone": "+254794368339",
         "address": [
           { "@type": "PostalAddress", "streetAddress": "StarMall, Shop C1", "addressLocality": "Nairobi", "addressCountry": "KE" },
-          { "@type": "PostalAddress", "streetAddress": "Maasai Market, Stall 27", "addressLocality": "Nakuru", "addressCountry": "KE" }
+          { "@type": "PostalAddress", "streetAddress": "Maasai Market, Stall 27", "addressLocality": "Nakuru", "addressCountry": "KE" },
+          { "@type": "PostalAddress", "streetAddress": "Soy Arcade, behind Naivas, Trokadero, Shop A24, Ground Floor", "addressLocality": "Eldoret", "addressCountry": "KE" }
         ]
       })}} />
 
@@ -60,14 +61,8 @@ export default function HomePage() {
         {/* ========== Featured Products Section ========== */}
         <section
           id="products"
-          className="py-20 md:py-28"
+          className="py-20 md:py-28 bg-cream-50"
           aria-labelledby="products-heading"
-          style={{
-            backgroundImage: 'url(/products-bg.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-          }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
@@ -196,7 +191,7 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div ref={locationsCards.ref} style={locationsCards.style} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div ref={locationsCards.ref} style={locationsCards.style} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Nairobi */}
               <div className="bg-forest-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
                 <div className="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -231,7 +226,26 @@ export default function HomePage() {
                   Get Directions →
                 </a>
               </div>
+              {/* Eldoret */}
+              <div className="bg-forest-50 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-forest-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-8 h-8 text-forest-700" />
+                </div>
+                <h3 className="font-heading text-2xl font-bold text-forest-900 mb-2">Eldoret</h3>
+                <p className="text-gray-600 font-medium">Soy Arcade, behind Naivas</p>
+                <p className="text-gray-600 font-medium">Trokadero, Shop A24, Ground Floor</p>
+                <p className="text-gray-400 text-sm mt-1">Mon–Sat: 8:00 AM – 6:00 PM</p>
+                <a
+                  href="https://wa.me/254794368339?text=Hi!%20I'd%20like%20directions%20to%20your%20Eldoret%20shop."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 text-forest-700 hover:text-gold-600 font-semibold text-sm"
+                >
+                  Get Directions →
+                </a>
+              </div>
             </div>
+            <p className="text-center text-forest-700 font-semibold mt-8">Delivery countrywide available</p>
           </div>
         </section>
 

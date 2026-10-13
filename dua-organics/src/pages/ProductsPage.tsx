@@ -4,7 +4,7 @@
  * Displays all products with category filtering.
  * SEO: meta tags, semantic HTML, product schema.
  */
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Leaf } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
@@ -13,11 +13,15 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function ProductsPage() {
   const { products, loading } = useData();
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
   const headerAnim = useScrollAnimation();
 
-  /* Extract unique categories from products */
-  const categories = ['All', ...new Set(products.map(p => p.category))];
+  /* Shop categories: Hair Care and Body Care only */
+  const categories = ['All', 'Hair Care', 'Body Care'];
+  const requested = searchParams.get('category');
+  const activeCategory = requested && categories.includes(requested) ? requested : 'All';
+  const setActiveCategory = (cat: string) =>
+    setSearchParams(cat === 'All' ? {} : { category: cat });
 
   /* Filter products by selected category */
   const filtered = activeCategory === 'All'

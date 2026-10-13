@@ -2,7 +2,7 @@
  * Dua Organics — Hero Section
  *
  * Fullscreen looping video background of a dense forest with a stream.
- * Dark green, no overlay, with elegant Times New Roman brand name.
+ * No overlay or tint, with elegant Times New Roman brand name.
  * CTA buttons redirect checkout to WhatsApp.
  *
  * Animations use inline CSS keyframes via state so they
@@ -56,33 +56,31 @@ export default function HeroSection() {
         <source src={VIDEO_URL} type="video/mp4" />
       </video>
 
-      {/* Subtle gradient at bottom for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-900/80 via-forest-900/20 to-transparent" />
-
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Full logo — dark backdrop keeps it visible over bright video */}
-        <div style={fadeStyle(0)} className="mb-6 px-2">
-          <div
-            className="rounded-[2rem] flex items-center justify-center px-6 py-5 sm:px-10 sm:py-7"
-            style={{
-              background: 'radial-gradient(ellipse, rgba(11,61,11,0.55) 0%, rgba(11,61,11,0.28) 60%, rgba(11,61,11,0) 100%)',
-              backdropFilter: 'blur(2px)',
-            }}
-          >
-            <img
-              src="/logo.png"
-              alt="Dua Organics — Natural Beauty, Naturally You"
-              className="w-[min(90vw,520px)] sm:w-[420px] md:w-[520px] object-contain"
-              style={{ filter: 'drop-shadow(0 3px 14px rgba(0,0,0,0.65))' }}
-            />
-          </div>
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.45)' }}>
+        {/* Decorative leaf element */}
+        <div style={fadeStyle(0)} className="mb-4">
+          <span className="text-4xl">🌿</span>
         </div>
 
-        {/* Visually hidden — keeps the page heading/tagline available to screen readers
-            and search engines now that they're shown inside the logo image above. */}
-        <h1 className="sr-only">Dua Organics</h1>
-        <p className="sr-only">Natural Beauty, Naturally You</p>
+        {/* Brand Name — Elegant Times New Roman / Cormorant Garamond */}
+        <h1
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-wide mb-4"
+          style={{
+            fontFamily: "'Cormorant Garamond', 'Times New Roman', serif",
+            ...fadeStyle(0.15),
+          }}
+        >
+          Dua Organics
+        </h1>
+
+        {/* Tagline */}
+        <p
+          className="text-white/80 text-lg sm:text-xl md:text-2xl font-light max-w-2xl mb-2"
+          style={{ fontFamily: 'var(--font-body)', ...fadeStyle(0.3) }}
+        >
+          Premium Organic Skincare from Nature
+        </p>
 
         {/* Leaf divider */}
         <div className="flex items-center gap-3 mb-8" style={fadeStyle(0.45)}>

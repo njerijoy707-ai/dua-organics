@@ -1,13 +1,16 @@
 /**
  * Dua Organics — Navigation Bar
- * 
- * Responsive navigation with transparent-to-solid scroll effect.
- * Includes mobile hamburger menu and auth-aware links.
+ *
+ * Brand on the left, hamburger menu on the right (all screen sizes).
+ * The hamburger opens a slide-out drawer with every section of the site.
  */
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User, ShoppingBag } from 'lucide-react';
+import { Menu, X, User, ShoppingBag, Leaf, Phone, Mail, MapPin } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+
+const WHATSAPP_ORDER =
+  'https://wa.me/254794368339?text=Hi%20Dua%20Organics!%20I\'d%20like%20to%20place%20an%20order.';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,150 +25,164 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  /* Close mobile menu on route change */
+  /* Close menu on route change */
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
-  /* Determine if we're on the homepage for transparent navbar */
+  /* Close on Escape + lock page scroll while the menu is open */
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsOpen(false);
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
+
+  /* Transparent navbar over the hero on the homepage */
   const isHome = location.pathname === '/';
   const bgClass = scrolled || !isHome
     ? 'bg-forest-900/95 backdrop-blur-md shadow-lg'
     : 'bg-transparent';
 
-  const navLinks = [
+  const mainLinks = [
     { to: '/', label: 'Home' },
-    { to: '/products', label: 'Shop' },
+    { to: '/products', label: 'Shop All Products' },
+    { to: '/products?category=Hair%20Care', label: 'Hair Care' },
+    { to: '/products?category=Body%20Care', label: 'Body Care' },
     { to: '/blog', label: 'Blog' },
-    { to: '/about', label: 'About' },
+    { to: '/about', label: 'About Us' },
   ];
 
+  const linkClass =
+    'block text-white/90 hover:text-gold-400 py-3 text-lg font-medium tracking-wide border-b border-white/10 transition-colors';
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${bgClass}`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <img
-              src="/logo.png"
-              alt="Dua Organics — Natural Beauty, Naturally You"
-              className="h-12 md:h-16 w-auto object-contain"
-            />
-          </Link>
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${bgClass}`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Brand Logo */}
+            <Link to="/" className="flex items-center gap-2 group">
+              <Leaf className="w-6 h-6 text-forest-300 group-hover:text-gold-400 transition-colors" />
+              <span className="font-heading text-2xl md:text-3xl font-bold text-white tracking-wide">
+                Dua Organics
+              </span>
+            </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map(link => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-sm font-medium tracking-wider uppercase transition-colors duration-300 ${
-                  location.pathname === link.to
-                    ? 'text-gold-400 border-b-2 border-gold-400 pb-1'
-                    : 'text-white/90 hover:text-gold-400'
-                }`}
+            <div className="flex items-center gap-3">
+              {/* Order CTA (desktop) */}
+              <a
+                href={WHATSAPP_ORDER}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105"
               >
-                {link.label}
-              </Link>
-            ))}
+                <ShoppingBag className="w-4 h-4" />
+                Order Now
+              </a>
 
-            {/* Auth Links */}
-            {isAuthenticated ? (
-              <>
-                {isAdmin && (
-                  <Link
-                    to="/admin"
-                    className="text-sm font-medium tracking-wider uppercase text-forest-300 hover:text-gold-400 transition-colors"
-                  >
-                    Admin
-                  </Link>
-                )}
-                <Link
-                  to="/dashboard"
-                  className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-gold-400 transition-colors"
-                >
-                  <User className="w-4 h-4" />
-                  Dashboard
-                </Link>
-              </>
-            ) : (
-              <Link
-                to="/login"
-                className="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-gold-400 transition-colors"
+              {/* Hamburger — visible on every screen size */}
+              <button
+                onClick={() => setIsOpen(true)}
+                className="text-white p-2 hover:text-gold-400 transition-colors"
+                aria-label="Open menu"
+                aria-expanded={isOpen}
+                aria-controls="site-menu"
               >
-                <User className="w-4 h-4" />
-                Login
-              </Link>
-            )}
-
-            {/* CTA — Order on WhatsApp */}
-            <a
-              href="https://wa.me/254794368339?text=Hi%20Dua%20Organics!%20I'd%20like%20to%20place%20an%20order."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              Order Now
-            </a>
+                <Menu className="w-7 h-7" />
+              </button>
+            </div>
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Menu Toggle */}
+      {/* Backdrop */}
+      <div
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 z-[60] bg-black/50 transition-opacity duration-300 ${
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        aria-hidden="true"
+      />
+
+      {/* Slide-out menu */}
+      <aside
+        id="site-menu"
+        className={`fixed top-0 right-0 bottom-0 z-[70] w-80 max-w-[85vw] bg-forest-900 text-white shadow-2xl overflow-y-auto transform transition-transform duration-300 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        aria-label="Site menu"
+        aria-hidden={!isOpen}
+      >
+        <div className="flex items-center justify-between px-6 h-16 md:h-20 border-b border-white/10">
+          <span className="font-heading text-2xl font-bold">Menu</span>
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
+            onClick={() => setIsOpen(false)}
+            className="p-2 hover:text-gold-400 transition-colors"
+            aria-label="Close menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <X className="w-7 h-7" />
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-forest-900/98 backdrop-blur-md border-t border-forest-700">
-          <div className="px-4 py-4 space-y-3">
-            {navLinks.map(link => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="block text-white/90 hover:text-gold-400 py-2 font-medium tracking-wide"
-              >
-                {link.label}
+        <div className="px-6 py-4">
+          {mainLinks.map(link => (
+            <Link key={link.label} to={link.to} className={linkClass}>
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Account */}
+          {isAuthenticated ? (
+            <>
+              <Link to="/dashboard" className={linkClass}>
+                <span className="flex items-center gap-2"><User className="w-5 h-5" /> My Dashboard</span>
               </Link>
-            ))}
-            {isAuthenticated ? (
-              <>
-                {isAdmin && (
-                  <Link to="/admin" className="block text-forest-300 hover:text-gold-400 py-2 font-medium">
-                    Admin Panel
-                  </Link>
-                )}
-                <Link to="/dashboard" className="block text-white/90 hover:text-gold-400 py-2 font-medium">
-                  Dashboard
+              {isAdmin && (
+                <Link to="/admin" className={`${linkClass} text-forest-300`}>
+                  Admin Panel
                 </Link>
-              </>
-            ) : (
-              <Link to="/login" className="block text-white/90 hover:text-gold-400 py-2 font-medium">
-                Login / Register
-              </Link>
-            )}
-            <a
-              href="https://wa.me/254794368339?text=Hi%20Dua%20Organics!%20I'd%20like%20to%20place%20an%20order."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-gold-500 text-white text-center px-4 py-3 rounded-full font-semibold mt-2"
-            >
-              🛒 Order on WhatsApp
+              )}
+            </>
+          ) : (
+            <Link to="/login" className={linkClass}>
+              <span className="flex items-center gap-2"><User className="w-5 h-5" /> Login / Register</span>
+            </Link>
+          )}
+
+          <a
+            href={WHATSAPP_ORDER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-white text-center px-4 py-3 rounded-full font-semibold mt-6 transition-colors"
+          >
+            <ShoppingBag className="w-5 h-5" />
+            Order on WhatsApp
+          </a>
+
+          {/* Quick contact */}
+          <div className="mt-8 space-y-3 text-sm text-white/70">
+            <a href="tel:+254794368339" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+              <Phone className="w-4 h-4" /> +254 794 368 339
             </a>
+            <a href="mailto:duaorganics@gmail.com" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+              <Mail className="w-4 h-4" /> duaorganics@gmail.com
+            </a>
+            <Link to="/about" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+              <MapPin className="w-4 h-4" /> Nairobi · Nakuru · Eldoret
+            </Link>
           </div>
         </div>
-      )}
-    </nav>
+      </aside>
+    </>
   );
 }

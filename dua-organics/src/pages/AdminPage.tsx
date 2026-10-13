@@ -299,7 +299,7 @@ export default function AdminPage() {
                               type="text" value={editingProduct.category}
                               onChange={e => setEditingProduct({ ...editingProduct, category: e.target.value })}
                               className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500"
-                              placeholder="e.g., Skincare"
+                              placeholder="Hair Care or Body Care"
                             />
                           </div>
                           <div className="md:col-span-2">

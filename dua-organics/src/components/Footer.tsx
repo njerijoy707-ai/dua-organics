@@ -5,7 +5,7 @@
  * newsletter signup, and sitemap links.
  */
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, Globe, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Leaf, Clock, Globe, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -17,11 +17,8 @@ export default function Footer() {
           {/* Brand Column */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img
-                src="/logo.png"
-                alt="Dua Organics — Natural Beauty, Naturally You"
-                className="h-14 w-auto object-contain"
-              />
+              <Leaf className="w-6 h-6 text-forest-300" />
+              <span className="font-heading text-2xl font-bold">Dua Organics</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-4">
               Premium organic skincare crafted from nature's finest botanicals. 
@@ -94,6 +91,20 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
+              {/* Eldoret Location */}
+              <div className="flex gap-3">
+                <MapPin className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-sm">Eldoret</p>
+                  <p className="text-white/70 text-sm">Soy Arcade, behind Naivas</p>
+                  <p className="text-white/70 text-sm">Trokadero, Shop A24, Ground Floor</p>
+                  <div className="flex items-center gap-1 text-white/50 text-xs mt-1">
+                    <Clock className="w-3 h-3" />
+                    <span>Mon-Sat: 8AM - 6PM</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gold-400 text-sm font-medium">Delivery countrywide available</p>
             </div>
           </div>
 
@@ -105,9 +116,9 @@ export default function Footer() {
                 <Phone className="w-4 h-4" />
                 +254 794 368 339
               </a>
-              <a href="mailto:hello@duaorganics.com" className="flex items-center gap-2 text-white/70 hover:text-gold-400 text-sm transition-colors">
+              <a href="mailto:duaorganics@gmail.com" className="flex items-center gap-2 text-white/70 hover:text-gold-400 text-sm transition-colors">
                 <Mail className="w-4 h-4" />
-                hello@duaorganics.com
+                duaorganics@gmail.com
               </a>
             </div>
             <h4 className="font-semibold text-sm mb-2">Join Our Newsletter</h4>

@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <Helmet>
         <title>About Us — Dua Organics | Our Story & Mission</title>
-        <meta name="description" content="Learn about Dua Organics — our mission to bring premium organic skincare from Kenya's forests to your doorstep. Visit us in Nairobi & Nakuru." />
+        <meta name="description" content="Learn about Dua Organics — our mission to bring premium organic skincare from Kenya's forests to your doorstep. Visit us in Nairobi, Nakuru & Eldoret." />
       </Helmet>
 
       <main className="pt-24 pb-20 bg-cream-50 min-h-screen">
@@ -102,7 +102,7 @@ export default function AboutPage() {
           {/* Locations Section */}
           <section ref={locAnim.ref} style={locAnim.style} className="pb-16">
             <h2 className="font-heading text-3xl font-bold text-forest-900 mb-8 text-center floral-heading">Visit Our Shops</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-forest-900 text-white rounded-2xl p-8 text-center">
                 <MapPin className="w-10 h-10 text-gold-400 mx-auto mb-4" />
                 <h3 className="font-heading text-2xl font-bold mb-2">Nairobi</h3>
@@ -133,7 +133,24 @@ export default function AboutPage() {
                   Get Directions
                 </a>
               </div>
+              <div className="bg-forest-900 text-white rounded-2xl p-8 text-center">
+                <MapPin className="w-10 h-10 text-gold-400 mx-auto mb-4" />
+                <h3 className="font-heading text-2xl font-bold mb-2">Eldoret</h3>
+                <p className="text-white/80 font-medium">Soy Arcade, behind Naivas</p>
+                <p className="text-white/80 font-medium">Trokadero, Shop A24, Ground Floor</p>
+                <p className="text-white/50 text-sm mt-2">Mon–Sat: 8:00 AM – 6:00 PM</p>
+                <p className="text-white/50 text-sm">Sunday: Closed</p>
+                <a
+                  href="https://wa.me/254794368339?text=Hi!%20I'd%20like%20to%20visit%20your%20Eldoret%20shop."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 bg-gold-500 hover:bg-gold-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors"
+                >
+                  Get Directions
+                </a>
+              </div>
             </div>
+            <p className="text-center text-forest-700 font-semibold mt-8">Delivery countrywide available</p>
           </section>
         </div>
       </main>
