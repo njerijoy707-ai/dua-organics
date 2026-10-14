@@ -60,13 +60,17 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.45)' }}>
         {/* Brand logo */}
         <div style={fadeStyle(0)} className="mb-5">
-          <span className="inline-block bg-cream-50/95 rounded-2xl px-4 py-2 shadow-lg">
-            <img
-              src="/logo.png"
-              alt="Dua Organics logo"
-              className="h-24 sm:h-28 md:h-32 w-auto block"
-            />
-          </span>
+          {/* Logo only — no box or background. A thin white outline plus soft shadow
+              follows the logo's shape so it stays readable over any video frame. */}
+          <img
+            src="/logo.png"
+            alt="Dua Organics logo"
+            className="h-28 sm:h-32 md:h-40 w-auto block mx-auto"
+            style={{
+              filter:
+                'drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 2px 10px rgba(0,0,0,0.55))',
+            }}
+          />
         </div>
 
         {/* Brand Name — Elegant Times New Roman / Cormorant Garamond */}
